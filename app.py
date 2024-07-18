@@ -37,7 +37,7 @@ from models import Venue, Artist, Show
 # class Venue(db.Model):
 #     __tablename__ = 'Venue'
 #     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String)
+#     name = db.Column(db.String, unique=True)
 #     city = db.Column(db.String(120))
 #     state = db.Column(db.String(120))
 #     address = db.Column(db.String(120))
@@ -230,6 +230,8 @@ def create_venue_submission():
 def delete_venue(venue_id):
   # TODO: Complete this endpoint for taking a venue_id, and using
   # SQLAlchemy ORM to delete a record. Handle cases where the session commit could fail.
+  
+  #Not sure if this works but I don't know how to test it because I think you have to edit the form or requests stuff for the method to work
   try:
      venue = db.session.get(Venue, venue_id)
      db.session.delete(venue)
